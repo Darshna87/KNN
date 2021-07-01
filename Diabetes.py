@@ -66,15 +66,12 @@ n=X_Test.shape[0]
 result=[]
 dict={}
 
-with open("Diabetes_KNN_result.csv","w") as fp:
-
-  fp.write("Outcome"+"\n")
-  for j in range(n):
+for j in range(n):
     r=int(KNN(X_data,Y_data,X_Test_Data[j]))
     result.append(r)
-    fp.write(str(r)+"\n")
+df = pd.DataFrame(data=result, columns=["Outcome"])
+df.to_csv("Diabetes_KNN_result.csv", index=False)
 
-print(result)
 
 #checking How many samples have been correct classified
 
